@@ -10,7 +10,6 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
 
 db = SQLAlchemy()
-migrate = Migrate(app, db)
 
 def setup_dp(app):
     app.config["SQLALCHEMY_DATABASR_URI"] = database_path
@@ -19,8 +18,7 @@ def setup_dp(app):
     db.init_app(app)
     db.create_all()
 
-
-class subject(db.model):
+class Subject(db.Model):
     __tablename__ = 'subjects'
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(80))
@@ -44,7 +42,7 @@ class subject(db.model):
 
 
 
-class Student(db.model): 
+class Student(db.Model): 
     __tablename__ = 'students'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
