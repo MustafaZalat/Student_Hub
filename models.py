@@ -10,6 +10,7 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filename))
 
 db = SQLAlchemy()
+migrate = Migrate(app, db)
 
 def setup_dp(app):
     app.config["SQLALCHEMY_DATABASR_URI"] = database_path
